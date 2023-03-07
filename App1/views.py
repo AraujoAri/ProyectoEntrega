@@ -2,13 +2,17 @@ from django.shortcuts import render
 from App1.models import Curso
 from django.http import HttpResponse
 
-def curso (self):
+def inicio (request):
+    return HttpResponse('estamos en el inicio')
 
-    curso1 = Curso(nombre='desarrollo web', camada=123)
-    curso1.save()
+def cursos (request):
+    return HttpResponse('estamos en cursos')
 
-    documentodetexto = f'--->curso: {curso1.nombre} y camada: {curso1.camada}'
-    
-    return HttpResponse(documentodetexto)
+def profesores (request):
+    return HttpResponse('estamos en profesores')
 
-#w
+def estudiantes (request):
+    return HttpResponse('estamos en estudiantes')
+
+def tareas (request):
+    return HttpResponse('estamos en tareas')
