@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from App1.models import Curso
 from django.http import HttpResponse
 
 def inicio (request):
