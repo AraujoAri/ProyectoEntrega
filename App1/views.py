@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 def inicio (request):
     return HttpResponse('estamos en el inicio')
 
@@ -11,7 +12,7 @@ def profesores (request):
     return HttpResponse('estamos en profesores')
 
 def estudiantes (request):
-    return HttpResponse('estamos en estudiantes')
+    return HttpResponse ('estamos en estudiantes')
 
 def tareas (request):
     return HttpResponse('estamos en tareas')
