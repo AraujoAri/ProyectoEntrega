@@ -3,16 +3,16 @@ from django.http import HttpResponse
 
 
 def inicio (request):
-    return HttpResponse('estamos en inicio')
+    return render(request, 'inicio.html')
 
 def cursos (request):
-    return HttpResponse('estamos en cursos')
+    return render(request, 'cursos.html')
 
 def profesores (request):
-    return HttpResponse('estamos en profesores')
+    return render(request, 'profesores.html')
 
 def estudiantes (request):
-    return HttpResponse ('estamos en estudiantes')
+    return render(request, 'estudiantes.html')
 
 def tareas (request):
-    return HttpResponse('estamos en tareas')
+    return render(request, 'tareas.html')

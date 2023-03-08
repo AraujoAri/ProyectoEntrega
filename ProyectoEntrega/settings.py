@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoEntrega.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['App1/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
