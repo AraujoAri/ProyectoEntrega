@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 def inicio (request):
-    return render(request, 'inicio.html')
+    return render(request, 'index.html')
 
 def cursos (request):
     return render(request, 'cursos.html')
