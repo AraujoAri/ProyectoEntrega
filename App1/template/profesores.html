@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profesores</title>
-</head>
-<body style="background-color: azure;">
-    estas en profesores
-</body>
-</html>
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoquecambia %}
+
+    <!-- Colocamos lo que va a cambiar -->
+    <h1>Estas en profesores que cambió</h1>
+    <p>se heredó todo desde la plantilla padre</p>
+    
+{% endblock %}
