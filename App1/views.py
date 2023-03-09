@@ -94,3 +94,20 @@ def productoformulario (request):
     else:
         miformulario=Productoformulario()
     return render(request, 'productoformulario.html', {'miformulario': miformulario})
+
+
+
+
+def busquedacamada(request):
+    return render(request, 'busquedacamada.html')
+
+def buscar (request):
+    if request.GET['camada']:
+        camada =request.GET['camada']
+        curso = Curso.objects.filter(camada_icontains=camada)
+
+        return render(request, 'resultadosbusqueda.html', {"curso": curso, "camada": camada})
+    else:
+        respuesta ="No enviaste datos"
+
+    return HttpResponse(respuesta)
