@@ -12,3 +12,9 @@ class Vendedorformulario (forms.Form):
     nombre =forms.CharField(max_length=30)            
     apellido =forms.CharField(max_length=30)
     email =forms.EmailField()
+
+
+class Clienteformulario (forms.Form):
+    nombre =forms.CharField(max_length=30)         
+    apellido = forms.CharField(max_length=30)
+    email = forms.EmailField()
