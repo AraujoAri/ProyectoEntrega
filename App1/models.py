@@ -20,6 +20,6 @@ class Profesor (models.Model):
 
 class tareas (models.Model):
     nombre= models.CharField(max_length=30)
-    fechadeentrega =models.DateField()                 #ESTO CORRESPONDE A LO QUE AHORA ES ---PRODUCTOS---
-    entregado = models.BooleanField()
+    cantidad =models.IntegerField()                 #ESTO CORRESPONDE A LO QUE AHORA ES ---PRODUCTOS---
+    numdeserie = models.IntegerField()
 
