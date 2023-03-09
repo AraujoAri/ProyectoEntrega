@@ -7,11 +7,18 @@
     <title>cursoformulario</title>
 </head>
 <body>
+
+    {% if miformulario.errors %}
+
+    <p style="color: red;"> Esta mal los datos, revisalos.</p>
+
+    {% endif %}
     
     <form action="cursoformulario" method="POST">{% csrf_token %}
-
-        <p>Curso: <input type="text" name="nombre"></p>
-        <p>camada: <input type="number" name="camada"></p>
+        
+        <table>
+            {{   miformulario.as_table}}
+        </table>
 
         <input type="submit" value="Enviar" >
     <form>

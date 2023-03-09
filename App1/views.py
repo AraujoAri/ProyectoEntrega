@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from App1.models import Curso
+from App1.forms import CursoFormulario
 
+
+       #-----VIEWS CORTITAS-----
 
 def inicio (request):
     return render(request, 'index.html')
@@ -9,21 +12,31 @@ def inicio (request):
 def cursos (request):
     return render(request, 'cursos.html')
 
-def doctores (request):
-    return render(request, 'doctores.html')
+def vendedor (request):
+    return render(request, 'vendedor.html')
 
-def pacientes (request):
-    return render(request, 'pacientes.html')
+def clientes (request):
+    return render(request, 'clientes.html')
 
-def turnos (request):
-    return render(request, 'turnos.html')
+def productos (request):
+    return render(request, 'productos.html')
 
-def cursoformulario(request):
+
+
+        #---FORMULARIOS----
+
+def Cursoformulario(request): 
     if request.method == 'POST':
+        miformulario = CursoFormulario(request.POST)
+        print(miformulario)
 
-        curso= Curso(request.POST['nombre'], request.POST['camada'])
-        curso.save()
+        if miformulario.is_valid:
+            informacion = miformulario.cleaned_data
 
-        return render(request, 'inicio.html')
-    
-    return render(request, 'cursoformulario.html')
+            curso = Curso(nombre=informacion['nombre'], camada=informacion['camada'])
+            curso.save()
+
+            return render(request, 'index.html')
+    else:
+        miformulario =CursoFormulario()
+    return render(request, 'cursoformulario.html', {'miformulario': miformulario})
