@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from App1.models import Curso
 
 
 def inicio (request):
@@ -16,3 +17,13 @@ def estudiantes (request):
 
 def tareas (request):
     return render(request, 'tareas.html')
+
+def cursoformulario(request):
+    if request.method == 'POST':
+
+        curso= Curso(request.POST['nombre'], request.POST['camada'])
+        curso.save()
+
+        return render(request, 'inicio.html')
+    
+    return render(request, 'cursoformulario.html')
