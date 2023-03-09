@@ -16,3 +16,5 @@ urlpatterns = [
     path('busquedacamada/', views.busquedacamada, name='BusquedaCamada'),
     path('buscar/', views.buscar)
 ]
+
+#prueba
