@@ -78,8 +78,6 @@ def clienteformulario (request):
 
 
 
-
-
 def productoformulario (request):
     if request.method == 'POST':
         miformulario = Productoformulario(request.POST)
@@ -87,8 +85,8 @@ def productoformulario (request):
         if miformulario.is_valid:
             informacion=miformulario.cleaned_data
             producto= tareas(nombre=informacion['nombre'],
-                             cantidad=informacion['cantidad'],
-                             numdeserie=informacion['numdeserie'])
+                             Fechadeentrega=informacion['Fechadeentrega'],
+                             entregado=informacion['entregado'])
             producto.save()
             return render(request, 'index.html')
     else:
@@ -104,7 +102,7 @@ def busquedacamada(request):
 def buscar (request):
     if request.GET['camada']:
         camada =request.GET['camada']
-        curso = Curso.objects.filter(camada_icontains=camada)
+        curso = Curso.objects.filter(camada__icontains=camada)
 
         return render(request, 'resultadosbusqueda.html', {"curso": curso, "camada": camada})
     else:

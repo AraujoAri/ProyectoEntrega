@@ -22,5 +22,5 @@ class Clienteformulario (forms.Form):
 
 class Productoformulario (forms.Form):
     nombre= forms.CharField(max_length=30)
-    cantidad =forms.IntegerField()                 
-    numdeserie = forms.IntegerField()
+    Fechadeentrega =forms.DateField()                 
+    entregado = forms.BooleanField()
