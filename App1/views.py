@@ -9,14 +9,14 @@ def inicio (request):
 def cursos (request):
     return render(request, 'cursos.html')
 
-def profesores (request):
-    return render(request, 'profesores.html')
+def doctores (request):
+    return render(request, 'doctores.html')
 
-def estudiantes (request):
-    return render(request, 'estudiantes.html')
+def pacientes (request):
+    return render(request, 'pacientes.html')
 
-def tareas (request):
-    return render(request, 'tareas.html')
+def turnos (request):
+    return render(request, 'turnos.html')
 
 def cursoformulario(request):
     if request.method == 'POST':
