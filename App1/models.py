@@ -13,7 +13,7 @@ class estudiante (models.Model):
     apellido = models.CharField(max_length=30)
     email = models.EmailField()
 
-class profesor (models.Model):
+class Profesor (models.Model):
     nombre =models.CharField(max_length=30)            #ESTO CORRESPONDE A LO QUE AHORA ES ---VENDEDOR---
     apellido =models.CharField(max_length=30)
     email =models.EmailField()

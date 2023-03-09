@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from App1.models import Curso
-from App1.forms import CursoFormulario
+from App1.models import Curso, Profesor
+from App1.forms import CursoFormulario, Vendedorformulario
 
 
        #-----VIEWS CORTITAS-----
@@ -40,3 +40,25 @@ def Cursoformulario(request):
     else:
         miformulario =CursoFormulario()
     return render(request, 'cursoformulario.html', {'miformulario': miformulario})
+
+
+def vendedorformulario (request):
+    if request.method == 'POST':
+        miformulario = Vendedorformulario(request.POST)
+        print(miformulario)
+
+        if miformulario.is_valid:
+            informacion= miformulario.cleaned_data
+
+            profesor = Profesor(nombre=informacion['nombre'],
+                                apellido=informacion['apellido'],
+                                email=informacion['email'])
+            
+            profesor.save()
+
+            return render(request, 'index.html')
+        
+    else:
+        miformulario = Vendedorformulario()
+
+    return render(request, 'vendedorformulario.html', {'miformulario': miformulario})
