@@ -5,6 +5,17 @@
 {% block contenidoquecambia %}
 
     <!-- Colocamos lo que va a cambiar -->
-    <h1>Usted esta en el inicio de la web</h1>
+    {% if cursos %}
+    <p>Estamos buscando el: {{camada}}</p>
+
+    <ul> 
+        {% for curso in cursos %}
+            <li> {{curso.nombre}} </li>
+            <li> {{curso.camada}} </li>
+        {% endfor %}
+    </ul> 
+    {% endif %}
+
 
 {% endblock %}
+<p style="color: red">{{respuesta}}</p>

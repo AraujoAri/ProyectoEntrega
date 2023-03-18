@@ -7,7 +7,10 @@
     <title>cursoformulario</title>
 </head>
 <body>
+    {% extends "App1/padre.html" %}
 
+    {% load static %}
+    
     {% if miformulario.errors %}
 
     <p style="color: red;"> Esta mal los datos, revisalos.</p>

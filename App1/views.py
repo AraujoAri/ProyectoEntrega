@@ -9,8 +9,8 @@ from App1.forms import CursoFormulario, Vendedorformulario, Clienteformulario, P
 def inicio (request):
     return render(request, 'index.html')
 
-def cursos (request):
-    return render(request, 'cursos.html')
+#def cursos (request):
+ #   return render(request, 'cursos.html')
 
 def vendedor (request):
     return render(request, 'vendedor.html')
@@ -25,7 +25,7 @@ def productos (request):
 
         #---FORMULARIOS----
 
-def Cursoformulario(request): 
+def cursos(request): 
     if request.method == 'POST':
         miformulario = CursoFormulario(request.POST)
         print(miformulario)
@@ -36,7 +36,7 @@ def Cursoformulario(request):
             return render(request, 'index.html')
     else:
         miformulario =CursoFormulario()
-    return render(request, 'cursoformulario.html', {'miformulario': miformulario})
+    return render(request, 'cursos.html', {'miformulario': miformulario})
 
 
 
@@ -99,13 +99,15 @@ def productoformulario (request):
 def busquedacamada(request):
     return render(request, 'busquedacamada.html')
 
+
 def buscar (request):
     if request.GET['camada']:
         camada =request.GET['camada']
         curso = Curso.objects.filter(camada__icontains=camada)
 
-        return render(request, 'resultadosbusqueda.html', {"curso": cursos, "camada": camada})
+        return render(request, 'index.html', {"curso": cursos, "camada": camada})
     else:
         respuesta ="No enviaste datos"
 
-    return HttpResponse(respuesta)
+    #return HttpResponse(respuesta)
+    return render(request, 'index.html', {"respuesta": respuesta})
