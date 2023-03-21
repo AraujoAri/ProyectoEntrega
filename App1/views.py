@@ -12,14 +12,14 @@ def inicio (request):
 #def cursos (request):
  #   return render(request, 'cursos.html')
 
-def vendedor (request):
-    return render(request, 'vendedor.html')
+#def vendedor (request):
+#    return render(request, 'vendedor.html')
 
-def clientes (request):
-    return render(request, 'clientes.html')
+#def clientes (request):
+#   return render(request, 'clientes.html')
 
-def productos (request):
-    return render(request, 'productos.html')
+#def productos (request):
+#    return render(request, 'productos.html')
 
 
 
@@ -42,7 +42,7 @@ def cursos(request):
 
 
 
-def vendedorformulario (request):
+def vendedor (request):
     if request.method == 'POST':
         miformulario = Vendedorformulario(request.POST)
         print(miformulario)
@@ -55,13 +55,13 @@ def vendedorformulario (request):
             return render(request, 'index.html')
     else:
         miformulario = Vendedorformulario()
-    return render(request, 'vendedorformulario.html', {'miformulario': miformulario})
+    return render(request, 'vendedor.html', {'miformulario': miformulario})
 
 
 
 
 
-def clienteformulario (request):
+def clientes (request):
     if request.method == 'POST':
         miformulario = Clienteformulario(request.POST)
         print(miformulario)
@@ -74,11 +74,11 @@ def clienteformulario (request):
             return render(request, 'index.html')
     else:
         miformulario= Clienteformulario()
-    return render(request, 'clienteformulario.html', {'miformulario': miformulario})
+    return render(request, 'clientes.html', {'miformulario': miformulario})
 
 
 
-def productoformulario (request):
+def productos (request):
     if request.method == 'POST':
         miformulario = Productoformulario(request.POST)
         print(miformulario)
@@ -91,7 +91,7 @@ def productoformulario (request):
             return render(request, 'index.html')
     else:
         miformulario=Productoformulario()
-    return render(request, 'productoformulario.html', {'miformulario': miformulario})
+    return render(request, 'productos.html', {'miformulario': miformulario})
 
 
 

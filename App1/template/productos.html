@@ -5,6 +5,21 @@
 {% block contenidoquecambia %}
 
     <!-- Colocamos lo que va a cambiar -->
-    <h1>Usted esta en pestaña productos</h1>
+    <h1>Productos</h1>
+    {% if miformulario.errors %}
+
+    <p style="color: red;"> Esta mal los datos, revisalos.</p>
+
+    {% endif %}
+    
+    <form action="" method="POST">{% csrf_token %}
+        
+        <table>
+            {{   miformulario.as_table}}
+        </table>
+
+        <input type="submit" value="Enviar" >
+    <form>
+
     
 {% endblock %}
