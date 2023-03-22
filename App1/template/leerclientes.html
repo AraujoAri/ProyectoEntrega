@@ -1,0 +1,12 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoquecambia %}
+
+    <!-- Colocamos lo que va a cambiar -->
+  {% for p in clientes %}
+  <li>{{p}}</li>
+  {% endfor %}
+    
+{% endblock %}

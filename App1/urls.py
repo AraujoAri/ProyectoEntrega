@@ -14,7 +14,11 @@ urlpatterns = [
     #path('clienteformulario', views.clienteformulario, name='Clienteformulario'),
     #path('productoformulario/', views.productoformulario, name='Productoformulario'),
     path('busquedacamada/', views.busquedacamada, name='BusquedaCamada'),
-    path('buscar/', views.buscar)
+    path('buscar/', views.buscar),
+    path('leercursos/', views.leercursos, name= 'Leercursos'),
+    path('leerclientes/', views.leerclientes, name= 'Leerclientes'),
+    path('leervendedor/', views.leervendedor, name='Leervendedor'),
+    path('leerproductos/', views.leerproductos, name='Leerproducto')
 ]
 
 #prueba

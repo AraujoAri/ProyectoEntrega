@@ -111,3 +111,25 @@ def buscar (request):
 
     #return HttpResponse(respuesta)
     return render(request, 'index.html', {"respuesta": respuesta})
+
+
+
+def leercursos (request):
+    cursos = Curso.objects.all()
+    contexto = {"cursos": cursos}
+    return render(request, "leercursos.html", contexto)
+
+def leerclientes (request):
+    clientes = estudiante.objects.all()
+    contexto = {"clientes": clientes}
+    return render (request, "leerclientes.html", contexto)
+
+def leervendedor (request):
+    vendedor = Profesor.objects.all()
+    contexto = {"vendedor": vendedor}
+    return render (request, "leervendedor.html", contexto)
+
+def leerproductos (request):
+    productos = tareas.objects.all()
+    contexto = {"productos": productos}
+    return render (request, "leerproductos.html", contexto)
