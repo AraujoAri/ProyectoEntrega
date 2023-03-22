@@ -5,8 +5,13 @@
 {% block contenidoquecambia %}
 
     <!-- Colocamos lo que va a cambiar -->
-  {% for p in cursos %}
-  <li>{{p}}</li>
-  {% endfor %}
-    
+    {% for p in cursos %}
+    <li>{{p}}</li>
+    <button>
+        <a href="{% url 'Eliminarcurso' p.nombre %}">Eliminar</a>
+    </button>
+{% endfor %}
+<br>
+<a href="cursos">Agregar cursos</a>
+
 {% endblock %}

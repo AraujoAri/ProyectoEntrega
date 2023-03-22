@@ -5,8 +5,14 @@
 {% block contenidoquecambia %}
 
     <!-- Colocamos lo que va a cambiar -->
-  {% for p in clientes %}
-  <li>{{p}}</li>
-  {% endfor %}
+    {% for p in clientes %}
+    <li>{{p}}</li>
+    <button>
+        <a href="{% url 'Eliminarcliente' p.nombre %}">Eliminar</a>
+    </button>
+{% endfor %}
+<br>
+<a href="clientes">Agregar clientes</a>
+
     
 {% endblock %}

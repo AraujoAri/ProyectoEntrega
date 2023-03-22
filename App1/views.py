@@ -133,3 +133,42 @@ def leerproductos (request):
     productos = tareas.objects.all()
     contexto = {"productos": productos}
     return render (request, "leerproductos.html", contexto)
+
+
+         #ELIMINAR 
+
+def eliminarcurso(request, curso_nombre):
+    curso = Curso.objects.get(nombre= curso_nombre)
+    curso.delete()
+
+    cursos = Curso.objects.all()
+    contexto = {"cursos": cursos}
+    return render(request, "leercursos.html", contexto)
+
+
+
+def eliminarcliente ( request, cliente_nombre):
+    cliente= estudiante.objects.get(nombre = cliente_nombre)
+    cliente.delete()
+
+    clientes = estudiante.objects.all()
+    contexto = {"clientes": clientes}
+    return render(request, "leerclientes.html", contexto)
+
+
+def eliminarvendedor(request, vendedor_nombre):
+    vendedor= Profesor.objects.get(nombre= vendedor_nombre)
+    vendedor.delete()
+
+    vendedors= Profesor.objects.all()
+    contexto= {"vendedors": vendedors}
+    return render(request, "leervendedor.html", contexto)
+
+
+def eliminarproducto(request, producto_nombre):
+    producto = tareas.objects.get(nombre= producto_nombre)
+    producto.delete()
+
+    productos = tareas.objects.all()
+    contexto = {"productos": productos}
+    return render(request, "leerproductos.html", contexto)
