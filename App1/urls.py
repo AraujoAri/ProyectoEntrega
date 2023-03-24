@@ -22,6 +22,15 @@ urlpatterns = [
     path('eliminarcliente/<cliente_nombre>/', views.eliminarcliente, name='Eliminarcliente'),
     path('eliminarvendedor/<vendedor_nombre>/', views.eliminarvendedor, name='Eliminarvendedor'),
     path('eliminarproductos/<producto_nombre>/', views.eliminarproducto, name='Eliminarproducto'),
+    path('editarcurso/<curso_nombre>/', views.editarcurso, name='Editarcurso'),  # type: ignore
+    path('editarcliente/<cliente_nombre>/', views.editarliente, name='Editarcliente'),  # type: ignore
+    path('editarvendedor/<vendedor_nombre>/', views.editarvendedor, name='Editarvendedor'), # type: ignore
+    path('editarproducto/<producto_nombre>/', views.editarproducto, name= 'Editarproducto'),  # type: ignore
+    path('curso/list', views.cursolist.as_view(), name='list'),
+    path('nuevo', views.cursocreacion.as_view(), name='new'),
+    path('borrar/<int:pk>', views.cursodelete.as_view(), name='delete'),
+    path('editar/<int:pk>', views.cursoupdate.as_view(), name='Editar'), # type: ignore
+    path('<int:pk>', views.cursodetalle.as_view(), name='Detalle'), # type: ignore
     ]
 
 #prueba

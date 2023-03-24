@@ -1,0 +1,21 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoquecambia %}
+
+<h1>Curso de coder - python</h1>
+<ul>
+    {% for curso in object_list %}
+        <li>
+            <p>Nombre: {{ curso.nombre }}</p>
+            <p>
+                <a href="{% url 'Detalle' curso.id %}">Ver</a>
+                <a href="{% url 'Editar' curso.id %}">Editar</a>
+                <a href="{% url 'delete' curso.id %}">Borrar</a>
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

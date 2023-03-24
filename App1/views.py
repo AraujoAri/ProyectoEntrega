@@ -2,6 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from App1.models import Curso, Profesor, estudiante, tareas
 from App1.forms import CursoFormulario, Vendedorformulario, Clienteformulario, Productoformulario
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView    
+from django.urls import reverse_lazy
+
 
 
        #-----VIEWS CORTITAS-----
@@ -172,3 +177,130 @@ def eliminarproducto(request, producto_nombre):
     productos = tareas.objects.all()
     contexto = {"productos": productos}
     return render(request, "leerproductos.html", contexto)
+
+            #EDITAR 
+
+def editarcurso (request, curso_nombre):
+    curso = Curso.objects.get(nombre = curso_nombre)
+    if request.method == 'POST':
+        miformulario = CursoFormulario(request.POST)
+        print(miformulario)
+
+        if miformulario.is_valid:
+            informacion = miformulario.cleaned_data
+
+            curso.nombre = informacion['nombre']
+            curso.camada = informacion['camada']
+
+            curso.save()
+            return render(request, "index.html")
+    else:
+        miformulario = CursoFormulario(initial={'nombre': curso.nombre,
+                                                'camada': curso.camada})
+        
+        return render (request, "editarcurso.html", {"miformulario": miformulario, 
+                                                     "curso_nombre": curso_nombre})
+    
+
+
+
+def editarliente (request, cliente_nombre):
+    cliente = estudiante.objects.get(nombre = cliente_nombre)
+    if request.method == 'POST':
+        miformulario = Clienteformulario(request.POST)
+        print(miformulario)
+
+        if miformulario.is_valid:
+            informacion = miformulario.cleaned_data
+
+            cliente.nombre= informacion['nombre']
+            cliente.apellido= informacion['apellido']
+            cliente.email= informacion['email']
+
+            cliente.save()
+            return render(request, "index.html")
+    
+    else:
+        miformulario = Clienteformulario(initial={'nombre': cliente.nombre,
+                                                  'apellido': cliente.apellido,
+                                                  'email': cliente.email})
+        
+        return render (request, "editarcliente.html", {"miformulario": miformulario,
+                                                       "cliente_nombre": cliente_nombre})
+    
+
+def editarvendedor (request, vendedor_nombre):
+    vendedor= Profesor.objects.get(nombre= vendedor_nombre)
+    if request.method == 'POST':
+        miformulario = Vendedorformulario(request.POST)
+        print(miformulario)
+
+        if miformulario.is_valid:
+            informacion = miformulario.cleaned_data
+
+            vendedor.nombre= informacion['nombre']
+            vendedor.apellido= informacion['apellido']
+            vendedor.email= informacion['email']
+
+            vendedor.save()
+            return render(request, "index.html")
+        
+    else:
+        miformulario= Vendedorformulario(initial={'nombre': vendedor.nombre,
+                                                  'apellido': vendedor.apellido,
+                                                  'email': vendedor.email})
+        
+        return render(request, "editarvendedor.html", {"miformulario": miformulario,
+                                                       "vendedor_nombre": vendedor_nombre})
+
+
+def editarproducto ( request, producto_nombre):
+    producto = tareas.objects.get(nombre= producto_nombre)
+    if request.method == 'POST':
+        miformulario= Productoformulario(request.POST)
+        print(miformulario)
+
+        if miformulario.is_valid:
+            informacion =miformulario.cleaned_data
+
+            producto.nombre= informacion['nombre']
+            producto.Fechadeentrega= informacion['Fechadeentrega']
+            producto.entregado= informacion ['entregado']
+
+            producto.save()
+            return render(request, "index.html")
+        
+    else:
+        miformulario= Productoformulario(initial={'nombre': producto.nombre,
+                                                  'fechadeentrega': producto.Fechadeentrega,
+                                                  'entregado': producto.entregado})
+        
+        return render(request, "editarvendedor.html", {"miformulario": miformulario,
+                                                       "producto_nombre": producto_nombre})
+    
+
+
+class cursolist (ListView):
+    model= Curso
+    template_name= "curso_list.html"
+
+class cursodetalle (DetailView):
+    model= Curso
+    template_name= "curso_detalle.html"
+
+class cursocreacion  (CreateView):
+    model = Curso
+    template_name= "curso_form.html"
+    success_url= reverse_lazy("App1:list")
+    fields= ['nombre', 'camada']
+
+class cursoupdate (UpdateView):
+    model= Curso
+    success_url= "/App1/curso/list"
+    template_name= "curso_form.html"
+    fields= ['nombre', 'camada']
+
+class cursodelete (DeleteView):
+    model = Curso 
+    template_name= "curso_confirm_delete.html"
+    success_url= "/App1/curso/list"
