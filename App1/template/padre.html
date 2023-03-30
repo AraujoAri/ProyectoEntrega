@@ -15,6 +15,15 @@
         <link href="{% static 'App1/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
+        {% if mensaje %}
+            <p>{{mensaje}}</p>
+        {% endif %}
+        <form  action="/App1/buscar/" method="GET">
+            <p>Realizar búsqueda de camada:</p>
+            <input type="number" name="camada" id="camada">
+            <input type="submit" value="Buscar">    
+
+        </form>
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static.top">
             <div class="container">

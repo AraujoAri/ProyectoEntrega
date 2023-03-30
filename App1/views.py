@@ -6,13 +6,55 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView    
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from App1.forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def inicio(request):
+    return render(request, 'index.html')
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request , data = request.POST)
+        if form.is_valid():
+            usuario = form .cleaned_data.get('username')
+            contras = form.cleaned_data.get ('password')
+
+            user = authenticate(username = usuario, password= contras)
+            if user is not None:
+                login(request, user)
+                return render(request, "index.html", {"mensaje":f"BIenvenido {usuario}"})
+            else:
+                return render(request, "index.html", {"mensaje":"error, datos incorrectos"})
+        else:
+            return render(request, "index.html", {"mensaje":"error, formulario erroneo."})
+    form= AuthenticationForm()
+    return render(request, "login.html", {"form":form})
+
+        
+def register(request):
+    if request.method == 'POST':
+        #form= UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        if  form.is_valid():
+
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, 'index.html', {'mensaje': 'Usuario Creado:'})
+    else:
+        #form = UserCreationForm()
+        form = UserRegisterForm()
+    return render (request, 'registro.html', {'form': form})
 
 
 
        #-----VIEWS CORTITAS-----
 
-def inicio (request):
-    return render(request, 'index.html')
+#def inicio (request):
+ #     return render(request, 'index.html')
 
 #def cursos (request):
  #   return render(request, 'cursos.html')
@@ -304,3 +346,4 @@ class cursodelete (DeleteView):
     model = Curso 
     template_name= "curso_confirm_delete.html"
     success_url= "/App1/curso/list"
+
